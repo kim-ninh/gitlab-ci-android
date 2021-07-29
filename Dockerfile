@@ -37,9 +37,10 @@ RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
 	sdkmanager "--update" && \
 	sdkmanager "build-tools;28.0.3" "build-tools;29.0.3" "build-tools;30.0.0" "build-tools;21.1.2" && \
     sdkmanager "cmake;3.10.2.4988404" && \
+    sdkmanager "cmake;3.18.1" && \
     sdkmanager "ndk;16.1.4479499" && \
     sdkmanager "ndk;${ANDROID_NDK_VERSION}" && \
-    sdkmanager "platforms;android-30" "platforms;android-29" "platforms;android-21" && \
+    sdkmanager "platforms;android-31" "platforms;android-30" "platforms;android-29" "platforms;android-21" && \
     # sdkmanager "emulator" "system-images;android-30;google_apis_playstore;x86_64" && \
     sdkmanager "platform-tools" "extras;android;m2repository" "extras;google;google_play_services" "extras;google;m2repository" "patcher;v4" "skiaparser;1"
 
@@ -56,6 +57,6 @@ RUN /bin/bash -l -c "gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py && \
     pip3 install requests telegram-send pydrive pexpect pyotp
 
-RUN sdkmanager "build-tools;30.0.3"
+RUN sdkmanager "build-tools;30.0.3" "build-tools;31.0.0"
 
 RUN curl -sSL "https://github.com/facebook/infer/releases/download/v0.16.0/infer-linux64-v0.16.0.tar.xz" | tar -C /opt -xJ && ln -s "/opt/infer-linux64-v0.16.0/bin/infer" /usr/local/bin/infer
